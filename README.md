@@ -160,6 +160,8 @@ MIT. VeriTrace is a research, education and document-hygiene tool. The watermark
 
 <div align="center">
 
-**Built by [Ameer Sohail Shaik](https://ameer-shaik.vercel.app/)** · [github.com/Sohail-56781](https://github.com/Sohail-56781)
+**Built by [Ameer Sohail Shaik](https://ameer-shaik.vercel.app/)** · [github.com/Sohail-5678](https://github.com/Sohail-5678)
+
+**Live:** [veritrace-sigma.vercel.app](https://veritrace-sigma.vercel.app)
 
 </div>

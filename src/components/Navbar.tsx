@@ -49,7 +49,7 @@ export function Navbar({ onOpenSecurity, onOpenBenchmark }: Props) {
             <span className="hidden sm:inline">Benchmark</span>
           </button>
           <a
-            href="https://github.com/Sohail-56781/veritrace"
+            href="https://github.com/Sohail-5678/veritrace"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-ghost !py-2 !px-3 text-xs"
