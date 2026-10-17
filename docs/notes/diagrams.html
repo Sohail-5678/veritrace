@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VeriTrace, in pictures</title>
+<style>
+  :root{ color-scheme: light; }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    background:#faf9f5;
+    color:#1f1e1b;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:760px; margin:0 auto; padding:44px 16px 96px; }
+  .kicker{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#857f73; margin:0 0 10px; }
+  h1{ font-size:30px; line-height:1.15; margin:0 0 14px; font-weight:650; letter-spacing:-0.01em; }
+  .lede{ font-size:17px; color:#444340; margin:0; max-width:62ch; }
+  h2{ font-size:21px; margin:52px 0 6px; font-weight:620; letter-spacing:-0.01em; }
+  .cap{ font-size:15px; color:#5f5e5a; margin:0 0 16px; max-width:64ch; }
+  .card{ background:#fff; border:1px solid #e5e3db; border-radius:14px; padding:18px; }
+  .card svg{ display:block; width:100%; height:auto; }
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .stat{ background:#fff; border:1px solid #e5e3db; border-radius:14px; padding:18px 18px 16px; }
+  .stat .n{ font-size:24px; font-weight:600; letter-spacing:-0.01em; color:#1f1e1b; }
+  .stat .d{ font-size:13px; color:#5f5e5a; margin-top:5px; line-height:1.35; }
+  footer{ margin-top:54px; padding-top:18px; border-top:1px solid #e5e3db; font-size:13px; color:#857f73; }
+  @media (max-width:520px){ .grid{ grid-template-columns:repeat(2,1fr); } h1{ font-size:26px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">Visual guide</p>
+  <h1>VeriTrace, in pictures</h1>
+  <p class="lede">VeriTrace inspects any document — a PDF, a Word file or pasted text — for the hidden fingerprints, invisible characters and watermark signatures that machine-generated files tend to carry. It shows them in a layered forensic view and can rebuild a clean copy that keeps your wording and facts intact, running for free entirely inside your own browser.</p>
+
+  <!-- ============================================================ -->
+  <!-- 2. PROBLEM -> SOLUTION                                        -->
+  <!-- ============================================================ -->
+  <h2>The real-world problem, and how it's solved</h2>
+  <p class="cap">Machine-generated documents carry traces most tools ignore. Each problem on the left maps to one specific VeriTrace check on the right.</p>
+  <div class="card">
+    <svg viewBox="0 0 680 336" role="img" aria-label="Problems mapped to solutions">
+      <defs>
+        <marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L6,3 L0,6" fill="none" stroke="#888780" stroke-width="1.2"/>
+        </marker>
+      </defs>
+      <text x="162" y="18" text-anchor="middle" font-size="12" font-weight="500" fill="#A32D2D">Problem</text>
+      <text x="520" y="18" text-anchor="middle" font-size="12" font-weight="500" fill="#0F6E56">How VeriTrace solves it</text>
+
+      <!-- row 1 -->
+      <rect x="44" y="34" width="236" height="54" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+      <text x="162" y="54" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#791F1F">Container fingerprints</text>
+      <text x="162" y="71" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#A32D2D">Skia/PDF, C2PA, fonts</text>
+      <rect x="400" y="34" width="240" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="520" y="54" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Binary provenance scan</text>
+      <text x="520" y="71" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">risk score 0–100</text>
+      <line x1="282" y1="61" x2="398" y2="61" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+      <!-- row 2 -->
+      <rect x="44" y="106" width="236" height="54" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+      <text x="162" y="126" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#791F1F">Invisible unicode</text>
+      <text x="162" y="143" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#A32D2D">zero-width, tag chars</text>
+      <rect x="400" y="106" width="240" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="520" y="126" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Steganography scanner</text>
+      <text x="520" y="143" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">decodes hidden payloads</text>
+      <line x1="282" y1="133" x2="398" y2="133" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+      <!-- row 3 -->
+      <rect x="44" y="178" width="236" height="54" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+      <text x="162" y="198" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#791F1F">Prompt injection</text>
+      <text x="162" y="215" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#A32D2D">hidden inside documents</text>
+      <rect x="400" y="178" width="240" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="520" y="198" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Injection firewall</text>
+      <text x="520" y="215" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">OWASP LLM01 rules</text>
+      <line x1="282" y1="205" x2="398" y2="205" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+      <!-- row 4 -->
+      <rect x="44" y="250" width="236" height="54" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+      <text x="162" y="270" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#791F1F">Parser-breaking spacing</text>
+      <text x="162" y="287" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#A32D2D">narrow no-break spaces</text>
+      <rect x="400" y="250" width="240" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="520" y="270" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Entity-locked hygiene</text>
+      <text x="520" y="287" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">facts kept byte-for-byte</text>
+      <line x1="282" y1="277" x2="398" y2="277" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow1)"/>
+    </svg>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 3. MAIN PIPELINE                                              -->
+  <!-- ============================================================ -->
+  <h2>What happens when you scan a document</h2>
+  <p class="cap">A scan runs four checks in order, behind a strict input firewall, then hands you a visual report. The sanitizer and any external call only run when you ask.</p>
+  <div class="card">
+    <svg viewBox="0 0 680 752" role="img" aria-label="Scan pipeline flowchart">
+      <defs>
+        <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L6,3 L0,6" fill="none" stroke="#888780" stroke-width="1.2"/>
+        </marker>
+      </defs>
+
+      <!-- legend -->
+      <rect x="44" y="8" width="12" height="12" rx="3" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="62" y="14" dominant-baseline="central" font-size="12" fill="#5f5e5a">Plain code</text>
+      <rect x="168" y="8" width="12" height="12" rx="3" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="186" y="14" dominant-baseline="central" font-size="12" fill="#5f5e5a">Statistics</text>
+      <rect x="292" y="8" width="12" height="12" rx="3" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="310" y="14" dominant-baseline="central" font-size="12" fill="#5f5e5a">Human</text>
+      <rect x="400" y="8" width="12" height="12" rx="3" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+      <text x="418" y="14" dominant-baseline="central" font-size="12" fill="#5f5e5a">External (optional)</text>
+
+      <!-- node 1 -->
+      <rect x="240" y="46" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="340" y="64" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#444441">Upload or paste</text>
+      <text x="340" y="81" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">pdf · docx · txt</text>
+      <line x1="340" y1="96" x2="340" y2="122" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+      <!-- node 2 -->
+      <rect x="240" y="124" width="200" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="340" y="142" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Input firewall</text>
+      <text x="340" y="159" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">magic bytes, size caps</text>
+      <line x1="340" y1="174" x2="340" y2="200" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+      <!-- node 3 decision -->
+      <rect x="240" y="202" width="200" height="50" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+      <text x="340" y="220" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#633806">Passes firewall?</text>
+      <text x="340" y="237" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#854F0B">polyglot / zip-bomb check</text>
+      <!-- reject branch -->
+      <rect x="470" y="202" width="160" height="50" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+      <text x="550" y="220" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#791F1F">Reject file</text>
+      <text x="550" y="237" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#A32D2D">too large or spoofed</text>
+      <line x1="440" y1="227" x2="468" y2="227" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+      <text x="454" y="219" text-anchor="middle" font-size="11" fill="#857f73">no</text>
+      <!-- yes down -->
+      <line x1="340" y1="252" x2="340" y2="280" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+      <text x="352" y="268" text-anchor="start" font-size="11" fill="#857f73">yes</text>
+
+      <!-- node 4 -->
+      <rect x="240" y="280" width="200" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="340" y="298" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Layer 1 — binary</text>
+      <text x="340" y="315" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">producer, C2PA, fonts</text>
+      <line x1="340" y1="330" x2="340" y2="356" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+      <!-- node 5 -->
+      <rect x="240" y="358" width="200" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="340" y="376" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Layer 2 — unicode</text>
+      <text x="340" y="393" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">invisible chars, homoglyphs</text>
+      <line x1="340" y1="408" x2="340" y2="434" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+      <!-- node 6 -->
+      <rect x="240" y="436" width="200" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="340" y="454" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Layer 3 — entropy</text>
+      <text x="340" y="471" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">z-score, g-score (sim)</text>
+      <line x1="340" y1="486" x2="340" y2="512" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+      <!-- node 7 human -->
+      <rect x="240" y="514" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="340" y="532" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#444441">Review the report</text>
+      <text x="340" y="549" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">heatmap + telemetry</text>
+      <line x1="340" y1="564" x2="340" y2="590" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+      <!-- node 8 sanitize -->
+      <rect x="240" y="592" width="200" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="340" y="610" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Layer 4 — sanitize</text>
+      <text x="340" y="627" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">on your action</text>
+      <!-- optional external branch -->
+      <rect x="470" y="592" width="160" height="50" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+      <text x="550" y="610" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#712B13">Groq style pass</text>
+      <text x="550" y="627" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#993C1D">BYOK, off by default</text>
+      <line x1="440" y1="617" x2="468" y2="617" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+      <line x1="340" y1="642" x2="340" y2="668" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+      <!-- node 9 -->
+      <rect x="240" y="670" width="200" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="340" y="688" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#444441">Download clean PDF</text>
+      <text x="340" y="705" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">same content, junk gone</text>
+    </svg>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 4. FOUR LAYERS                                                -->
+  <!-- ============================================================ -->
+  <h2>Four layers over the same text</h2>
+  <p class="cap">The document passes through four independent layers, from raw bytes up to a clean rebuild. The first three gather evidence (purple); the last one acts on it (teal).</p>
+  <div class="card">
+    <svg viewBox="0 0 680 360" role="img" aria-label="The four forensic layers">
+      <!-- band 1 -->
+      <rect x="40" y="24" width="600" height="64" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <rect x="54" y="40" width="32" height="32" rx="8" fill="#fff" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="70" y="56" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="600" fill="#3C3489">1</text>
+      <text x="100" y="49" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Binary &amp; C2PA container</text>
+      <text x="100" y="68" dominant-baseline="central" font-size="12" fill="#534AB7">producer, XMP, C2PA, font subsets</text>
+      <text x="624" y="56" text-anchor="end" dominant-baseline="central" font-size="13" fill="#534AB7">→ risk score 0–100</text>
+
+      <!-- band 2 -->
+      <rect x="40" y="104" width="600" height="64" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <rect x="54" y="120" width="32" height="32" rx="8" fill="#fff" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="70" y="136" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="600" fill="#3C3489">2</text>
+      <text x="100" y="129" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Unicode steganography</text>
+      <text x="100" y="148" dominant-baseline="central" font-size="12" fill="#534AB7">35+ invisible codepoints, homoglyphs</text>
+      <text x="624" y="136" text-anchor="end" dominant-baseline="central" font-size="13" fill="#534AB7">→ decoded payloads</text>
+
+      <!-- band 3 -->
+      <rect x="40" y="184" width="600" height="64" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <rect x="54" y="200" width="32" height="32" rx="8" fill="#fff" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="70" y="216" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="600" fill="#3C3489">3</text>
+      <text x="100" y="209" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Entropy &amp; watermark</text>
+      <text x="100" y="228" dominant-baseline="central" font-size="12" fill="#534AB7">Shannon H, green-list z, tournament g</text>
+      <text x="624" y="216" text-anchor="end" dominant-baseline="central" font-size="13" fill="#534AB7">→ entropy heatmap</text>
+
+      <!-- band 4 -->
+      <rect x="40" y="264" width="600" height="64" rx="10" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <rect x="54" y="280" width="32" height="32" rx="8" fill="#fff" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="70" y="296" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="600" fill="#085041">4</text>
+      <text x="100" y="289" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Entity-locked hygiene</text>
+      <text x="100" y="308" dominant-baseline="central" font-size="12" fill="#0F6E56">lock facts, strip junk, rebuild pdf</text>
+      <text x="624" y="296" text-anchor="end" dominant-baseline="central" font-size="13" fill="#0F6E56">→ clean PDF</text>
+    </svg>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 5. SANITIZER                                                  -->
+  <!-- ============================================================ -->
+  <h2>How the sanitizer never loses a fact</h2>
+  <p class="cap">It locks every number, date, name and skill first, edits only the prose around them, and refuses any edit that would drop one — falling back to a loss-free clean-up instead.</p>
+  <div class="card">
+    <svg viewBox="0 0 680 580" role="img" aria-label="Entity-locked sanitizer flow">
+      <defs>
+        <marker id="arrow4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L6,3 L0,6" fill="none" stroke="#888780" stroke-width="1.2"/>
+        </marker>
+      </defs>
+
+      <!-- 1 -->
+      <rect x="230" y="40" width="220" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="340" y="58" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#444441">Original document</text>
+      <text x="340" y="75" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">your text or pdf</text>
+      <line x1="340" y1="90" x2="340" y2="116" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+      <!-- 2 -->
+      <rect x="230" y="116" width="220" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="340" y="134" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Lock the facts</text>
+      <text x="340" y="151" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">numbers, dates, names, tech</text>
+      <line x1="340" y1="166" x2="340" y2="192" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+      <!-- 3 -->
+      <rect x="230" y="192" width="220" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="340" y="210" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Strip hidden characters</text>
+      <text x="340" y="227" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">zero-width, narrow spaces</text>
+      <line x1="340" y1="242" x2="340" y2="268" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+      <!-- 4 -->
+      <rect x="230" y="268" width="220" height="50" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="340" y="286" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Clean style tells</text>
+      <text x="340" y="303" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">locked entities masked first</text>
+      <line x1="340" y1="318" x2="340" y2="344" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+      <!-- 5 decision -->
+      <rect x="230" y="344" width="220" height="50" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+      <text x="340" y="362" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#633806">Entity recall = 100%?</text>
+      <text x="340" y="379" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#854F0B">verification gate</text>
+      <!-- no branch -->
+      <rect x="480" y="344" width="150" height="50" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+      <text x="555" y="362" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#791F1F">Keep original words</text>
+      <text x="555" y="379" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#A32D2D">loss-free fallback</text>
+      <line x1="450" y1="369" x2="478" y2="369" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow4)"/>
+      <text x="464" y="361" text-anchor="middle" font-size="11" fill="#857f73">no</text>
+      <!-- yes down -->
+      <line x1="340" y1="394" x2="340" y2="420" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow4)"/>
+      <text x="352" y="406" text-anchor="start" font-size="11" fill="#857f73">yes</text>
+
+      <!-- 6 -->
+      <rect x="230" y="420" width="220" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="340" y="438" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Rebuild clean PDF</text>
+      <text x="340" y="455" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">clean desktop metadata</text>
+      <line x1="340" y1="470" x2="340" y2="496" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+      <!-- 7 -->
+      <rect x="230" y="496" width="220" height="50" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="340" y="514" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#444441">Sanitized document</text>
+      <text x="340" y="531" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">same facts, junk gone</text>
+    </svg>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 6. GUARDRAILS                                                 -->
+  <!-- ============================================================ -->
+  <h2>Five guardrails around every request</h2>
+  <p class="cap">The input is untrusted text from the open internet, so each request passes through five independent defenses before anything runs.</p>
+  <div class="card">
+    <svg viewBox="0 0 680 340" role="img" aria-label="Five security guardrails">
+      <rect x="40" y="20" width="600" height="288" rx="14" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="60" y="44" dominant-baseline="central" font-size="14" font-weight="500" fill="#444441">Zero-trust guardrails · every request</text>
+
+      <rect x="56" y="60" width="568" height="40" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+      <text x="72" y="80" dominant-baseline="central" font-size="14" font-weight="500" fill="#712B13">1 · Spotlighting</text>
+      <text x="608" y="80" text-anchor="end" dominant-baseline="central" font-size="12" fill="#993C1D">per-request nonce boundary</text>
+
+      <rect x="56" y="108" width="568" height="40" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+      <text x="72" y="128" dominant-baseline="central" font-size="14" font-weight="500" fill="#712B13">2 · Injection scanner</text>
+      <text x="608" y="128" text-anchor="end" dominant-baseline="central" font-size="12" fill="#993C1D">OWASP LLM01, blocks LLM call</text>
+
+      <rect x="56" y="156" width="568" height="40" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+      <text x="72" y="176" dominant-baseline="central" font-size="14" font-weight="500" fill="#712B13">3 · Canary trap</text>
+      <text x="608" y="176" text-anchor="end" dominant-baseline="central" font-size="12" fill="#993C1D">aborts on secret leak</text>
+
+      <rect x="56" y="204" width="568" height="40" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+      <text x="72" y="224" dominant-baseline="central" font-size="14" font-weight="500" fill="#712B13">4 · Input firewall</text>
+      <text x="608" y="224" text-anchor="end" dominant-baseline="central" font-size="12" fill="#993C1D">magic bytes · 4.5 MB · 50k chars</text>
+
+      <rect x="56" y="252" width="568" height="40" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+      <text x="72" y="272" dominant-baseline="central" font-size="14" font-weight="500" fill="#712B13">5 · Rate limit + CSP</text>
+      <text x="608" y="272" text-anchor="end" dominant-baseline="central" font-size="12" fill="#993C1D">15 req/min/IP, strict headers</text>
+    </svg>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 7. MODES                                                      -->
+  <!-- ============================================================ -->
+  <h2>Two ways in: demo or your own file</h2>
+  <p class="cap">Explore it instantly with pre-loaded artifacts, or run it on your own document. Either way, nothing leaves your machine.</p>
+  <div class="card">
+    <svg viewBox="0 0 680 290" role="img" aria-label="Demo sandbox versus live workspace">
+      <!-- demo -->
+      <rect x="40" y="20" width="285" height="180" rx="14" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="56" y="44" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Demo sandbox</text>
+      <text x="56" y="62" dominant-baseline="central" font-size="12" fill="#534AB7">zero-click, pre-loaded</text>
+      <rect x="56" y="78" width="253" height="32" rx="7" fill="#fff" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="182" y="94" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#3C3489">Résumé · watermark sim</text>
+      <rect x="56" y="118" width="253" height="32" rx="7" fill="#fff" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="182" y="134" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#3C3489">M&amp;A memo · canary leak</text>
+      <rect x="56" y="158" width="253" height="32" rx="7" fill="#fff" stroke="#534AB7" stroke-width="0.5"/>
+      <text x="182" y="174" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#3C3489">Invoice · prompt injection</text>
+
+      <!-- live -->
+      <rect x="355" y="20" width="285" height="180" rx="14" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="371" y="44" dominant-baseline="central" font-size="14" font-weight="500" fill="#085041">Use your own</text>
+      <text x="371" y="62" dominant-baseline="central" font-size="12" fill="#0F6E56">drag-drop or paste</text>
+      <rect x="371" y="78" width="253" height="32" rx="7" fill="#fff" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="497" y="94" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#085041">Drop pdf / docx / txt</text>
+      <rect x="371" y="118" width="253" height="32" rx="7" fill="#fff" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="497" y="134" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#085041">Runs in your browser</text>
+      <rect x="371" y="158" width="253" height="32" rx="7" fill="#fff" stroke="#0F6E56" stroke-width="0.5"/>
+      <text x="497" y="174" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#085041">Download clean PDF</text>
+
+      <!-- footer -->
+      <rect x="40" y="212" width="600" height="40" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+      <text x="340" y="232" text-anchor="middle" dominant-baseline="central" font-size="13" fill="#444441">Both modes · $0 · local-first · files never uploaded</text>
+    </svg>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 8. PROOF                                                      -->
+  <!-- ============================================================ -->
+  <h2>The proof</h2>
+  <p class="cap">Every figure below comes from the repo's own test suite and the in-app 30-case benchmark, which is deterministic (same inputs, same results).</p>
+  <div class="grid">
+    <div class="stat"><div class="n">24</div><div class="d">tests passing — forensics + security</div></div>
+    <div class="stat"><div class="n">100%</div><div class="d">entity-lock fidelity — no fact altered</div></div>
+    <div class="stat"><div class="n">100%</div><div class="d">red-team block rate across 12 payloads</div></div>
+    <div class="stat"><div class="n">1.00</div><div class="d">watermark ROC-AUC, 30-case benchmark</div></div>
+    <div class="stat"><div class="n">4</div><div class="d">forensic layers in a single scan</div></div>
+    <div class="stat"><div class="n">$0</div><div class="d">operating cost — runs fully in-browser</div></div>
+  </div>
+
+  <footer>VeriTrace — zero-trust document provenance forensics &amp; hygiene. Visual guide.</footer>
+
+</div>
+</body>
+</html>
